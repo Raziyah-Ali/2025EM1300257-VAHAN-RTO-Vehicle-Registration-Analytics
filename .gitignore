@@ -1,0 +1,19 @@
+# Environments
+venv/
+.venv/
+env/
+
+# Python cache & build outputs
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE & OS files
+.DS_Store
+.vscode/
+.idea/
