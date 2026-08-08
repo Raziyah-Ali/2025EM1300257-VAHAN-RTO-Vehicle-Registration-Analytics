@@ -30,42 +30,81 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Force light mode and hide the dark/light theme toggle
+# Force light mode and high-contrast typography
 st.markdown("""
 <style>
+    /* Force light mode color scheme */
+    :root {
+        color-scheme: light !important;
+    }
+    
     /* Hide the settings menu theme toggle */
     [data-testid="stMainMenu"] button[kind="header"],
     [data-testid="baseButton-headerNoPadding"],
     header [data-testid="stToolbar"] div:has(> button[title*="settings"]),
-    div[data-testid="stAppViewBlockContainer"] { color-scheme: light; }
+    div[data-testid="stAppViewBlockContainer"] { color-scheme: light !important; }
 
     /* Force light background everywhere */
-    .stApp, [data-testid="stAppViewContainer"],
+    html, body, .stApp, [data-testid="stAppViewContainer"],
     [data-testid="stSidebar"],
-    [data-testid="stHeader"] { background-color: #FFFFFF !important; }
+    [data-testid="stHeader"],
+    [data-testid="stMain"] { 
+        background-color: #FFFFFF !important; 
+        color: #0F172A !important;
+    }
 
-    [data-testid="stSidebar"] { background-color: #F8FAFC !important; }
+    [data-testid="stSidebar"] { 
+        background-color: #F8FAFC !important; 
+    }
 
-    /* Clean tab styling */
+    /* Force all headings and text elements to be dark, bold, and crisp */
+    h1, h2, h3, h4, h5, h6, 
+    .stMarkdown, .stMarkdown p, .stMarkdown span,
+    [data-testid="stHeading"] *,
+    [data-testid="stMarkdownContainer"] *,
+    [data-testid="stWidgetLabel"] *,
+    .stText, span, p, label {
+        color: #0F172A !important;
+    }
+
+    /* Subtitles & captions */
+    [data-testid="stCaptionContainer"],
+    [data-testid="stCaptionContainer"] p,
+    [data-testid="stCaptionContainer"] span {
+        color: #334155 !important;
+    }
+
+    /* Clean tab styling with visible text */
     .stTabs [data-baseweb="tab-list"] { gap: 8px; }
     .stTabs [data-baseweb="tab"] {
-        background-color: #F1F5F9;
+        background-color: #F1F5F9 !important;
         border-radius: 6px 6px 0 0;
         padding: 8px 16px;
-        color: #64748B;
+        color: #475569 !important;
+    }
+    .stTabs [data-baseweb="tab"] p,
+    .stTabs [data-baseweb="tab"] div,
+    .stTabs [data-baseweb="tab"] span {
+        color: #475569 !important;
+        font-weight: 500 !important;
     }
     .stTabs [aria-selected="true"] {
-        background-color: #FFFFFF;
-        color: #0F172A;
-        font-weight: 600;
-        border-bottom: 2px solid #1F6FB2;
+        background-color: #FFFFFF !important;
+        border-bottom: 3px solid #1F6FB2 !important;
+    }
+    .stTabs [aria-selected="true"] p,
+    .stTabs [aria-selected="true"] div,
+    .stTabs [aria-selected="true"] span {
+        color: #0F172A !important;
+        font-weight: 700 !important;
     }
 
     /* Cleaner metric cards */
-    [data-testid="stMetricValue"] { color: #0F172A; }
+    [data-testid="stMetricValue"] { color: #0F172A !important; }
+    [data-testid="stMetricLabel"] { color: #475569 !important; }
 
     /* Sidebar divider */
-    [data-testid="stSidebar"] hr { border-color: #E2E8F0; }
+    [data-testid="stSidebar"] hr { border-color: #E2E8F0 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -444,7 +483,7 @@ df_all = load_data(DATA_PATH)
 # ---------------------------------------------------------------------------
 
 st.sidebar.title("Filters & Options")
-st.sidebar.caption("👤 **Author:** Abhiram\n\n📚 **Course:** Data Visualization & Storytelling")
+st.sidebar.caption("👤 **Author:** Raziyah Ali\n\n📚 **Course:** Data Visualization & Storytelling")
 st.sidebar.divider()
 
 year_min = int(df_all["Registration_Year"].min())
@@ -533,7 +572,7 @@ st.sidebar.metric("Records in selection", fmt_int(len(df)), f"of {fmt_int(len(df
 
 st.title("VAHAN RTO Registration Analytics")
 st.caption(
-    f"**Prepared by:** Abhiram | **Course:** Data Visualization & Storytelling (DVS) | "
+    f"**Prepared by:** Raziyah Ali | **Course:** Data Visualization & Storytelling (DVS) | "
     f"{fmt_int(len(df_all))} registrations · {df_all['State'].nunique()} states · "
     f"{year_min} to {year_max}")
 

@@ -1,8 +1,12 @@
 # VAHAN RTO Vehicle Registration Analytics
 
+**Author:** Raziyah Ali  
+**Repository:** [https://github.com/Raziyah-Ali/2025EM1300257-VAHAN-RTO-Vehicle-Registration-Analytics](https://github.com/Raziyah-Ali/2025EM1300257-VAHAN-RTO-Vehicle-Registration-Analytics)
+
 An interactive, executive-level Streamlit analytics dashboard and data pipeline built for Indian VAHAN RTO vehicle registration data (2018–2024).
 
 ---
+
 
 ## Quick Start
 
